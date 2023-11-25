@@ -1,0 +1,780 @@
+*{
+    text-transform: capitalize;
+    box-sizing: border-box;
+    margin: 0;
+}
+*::selection{
+    background: var(--main-color);
+    color: antiquewhite;
+    font-weight: bold;
+}
+
+:root{
+    --title-padding: 0px 0px 15px 0px;
+    --line-height: 1.8;
+    --main-color:#10cab7;
+    --title-color:#e5e3e3;
+    --second-color:#f3f3f381;
+    --third-color:#2c4755;
+    --section-margin: 50px 150px;
+}
+body{
+    font-family: 'Work Sans', sans-serif;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:rgb(251, 251, 251);
+    height: 70px;
+    position: relative;
+
+}
+header img{
+    position: absolute;
+    transform: scale(20%); 
+    top: -40%;
+}
+
+/* the icon of dropdown list */
+
+nav{
+    position: relative;
+    display: block;
+    height: 150px;
+    width: 30px;
+    right: -85%;
+    top: 5px;
+    z-index: 2;
+    
+}
+
+nav div:not(.dropdown-list, .dropdown-list >*){
+    position: absolute;
+    background-color: var(--third-color);
+    width: 20px;
+    height: 1px;
+    right: 0px;
+    top: 25px;
+    transition-duration: .4s;
+    transition-property: width;
+    transition-timing-function: linear;
+}
+nav div:not(.dropdown-list, .dropdown-list >*)::after{
+    content: "";
+    position: absolute;
+    background-color: var(--third-color);
+    width: 30px;
+    height: 2px;
+    right: 0px;
+    top: 7px;
+}
+nav div:not(.dropdown-list, .dropdown-list >*)::before{
+    content: "";
+    position: absolute;
+    background-color: var(--third-color);
+    width: 30px;
+    height: 1.5px;
+    right: 0px;
+    top: -8px;
+}
+
+/* the dropdown list itself */
+
+.dropdown-list{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    background-color: rgb(249, 246, 253);
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding-left: 20px;
+    right: 0px;
+    top: 60px;
+    z-index: 1;
+}
+
+/* to remove the underline of the texts */
+
+a{
+    text-decoration: none;
+}
+
+/* the transition-style of the text of the dropdown list */
+
+.dropdown-list a p{
+    color: black;    
+    transition: .3s ease-in;
+}
+
+/* to style the line divides the content of the dropdwon list */
+
+.dropdown-list a:not(.dropdown-list a:nth-child(4)):after{
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: .5px;
+    background-color: rgb(199, 199, 199);
+    right: 0px;
+    margin: 5px 0px;
+}
+
+/* what happens when hover */
+
+nav div:first-child:hover {
+   background-color: var(--main-color);
+   width: 30px;
+}
+nav:hover .dropdown-list {
+    display: flex;
+}
+.dropdown-list a p:hover{
+    color: var(--main-color);
+    transform: translateX(10px);
+}
+
+/* the hello section */
+
+.welcome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./images/landing.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    transform: scale(104%);
+    height: 40vw;
+    width: 98%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.welcome .title{
+    text-align: center;
+    color: var(--main-color,#10cab7);
+    font-weight: 800;
+    font-size: 40px;
+    padding: var(--title-padding,15px);
+}
+.welcome p:not(.title){
+    text-align: center;
+    width: 250px;
+    line-height: var(--line-height,1.8);
+}
+
+
+/* the info section */
+
+.info{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr;
+    justify-content: space-around;
+    padding: 5%;
+    width: 100%;
+    background-color: var(--second-color);
+}
+.info div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0% 10% 5% 10%;
+}
+.info div:nth-child(1):before{
+    content: "\e87d";
+    font-family: "Material Symbols Outlined";
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 0px;
+    color: var(--main-color);
+    padding: 5px;
+}
+.info div:nth-child(2):before{
+    content: "\e5ca";
+    font-family: "Material Symbols Outlined";
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 0px;
+    color: var(--main-color);
+    padding: 5px;
+}
+.info div:nth-child(3):before{
+    content: "\e80b";
+    font-family: "Material Symbols Outlined";
+    font-weight: 800;
+    font-size: 60px;
+    margin-top: 0px;
+    color: var(--main-color);
+    padding: 5px;
+    
+}
+.info div .title {
+    font-weight: bolder;
+    font-size: 20px;
+    padding: var(--title-padding,15px);
+    white-space: nowrap;
+}
+.info div p:not(.title){
+    text-align: center;
+    color: rgb(152, 151, 151);
+    line-height: var(--line-height,1.8);
+    padding: 0px 2%;
+}
+
+/* Small */
+@media (max-width: 649px) {
+    .info{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+/* Medium */
+@media (min-width:650px) {
+    .info{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+/* Large */
+@media (min-width:995px) {
+    .info{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+
+/* this is the service section */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3,30%);
+    justify-content: center;
+    column-gap: 7%;
+    row-gap: 5px;
+    margin: var(--section-margin);
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* the servies title section */
+
+.services .main-title{
+    /* grid-column: 1/4; */
+    text-align: center;
+    font-size: 100px;
+    font-weight: 1000;
+    color: var(--title-color);
+}
+.services .main-title::after{
+    content: "don't be busy, be productive";
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: dimgrey;
+    font-weight: 300;
+    transform: translateY(-40px);
+}
+
+/* the services box section */
+
+/* the image design */
+
+.services .img{
+    transform: scale(60%);
+    grid-row: 2/4 ;
+    grid-column: 3;
+    position: relative;
+}
+.services .img::after{
+    content: "";
+    width: 150px;
+    height: 600px;
+    background-color: var(--third-color);
+    position: absolute;
+    right: -35%;
+    top: -13%;
+    z-index: -1;
+}
+
+/* the design of each box of the services excpet the image */
+
+.services div:not(.img){
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* the icon of graphic design */
+
+.services div:nth-child(2)::before{
+    content: "\e746";
+    font-family: "Material Symbols Outlined";
+    position: absolute;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--main-color);
+    left: -45px;
+    top: 10px;
+}
+
+/* the icon of web design */
+
+.services div:nth-child(3)::before{
+    content: "\f7f7";
+    font-family: "Material Symbols Outlined";
+    position: absolute;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--main-color);
+    left: -45px;
+    top: 10px;
+}
+
+/* the icon of UI & UX design */
+
+.services div:nth-child(4)::before{
+    content: "\e174";
+    font-family: "Material Symbols Outlined";
+    position: absolute;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--main-color);
+    left: -45px;
+    top: 10px;
+}
+
+/* the icon of web development design */
+
+.services div:nth-child(5)::before{
+    content: "\ea3c";
+    font-family: "Material Symbols Outlined";
+    position: absolute;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--main-color);
+    left: -45px;
+    top: 10px;
+}
+
+/* the design of the box texts */
+
+.services div .title{
+    font-size: 16px;
+    font-weight: 700;
+    padding: var(--title-padding);
+}
+.services div p:not(.title){
+    color: rgb(94, 94, 94);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: var(--line-height);
+}
+
+/* Small */
+@media (max-width: 649px) {
+    .services{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto ;
+        row-gap: 100px;
+    }
+    .services .img{
+        display: none;
+    }
+    .services div .title ,.services div p:not(.title) {
+        text-align: center;
+    }
+    /* the icon of graphic design */
+
+    .services div:nth-child(2)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+    /* the icon of web design */
+
+    .services div:nth-child(3)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+    /* the icon of UI & UX design */
+
+    .services div:nth-child(4)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+    /* the icon of web development design */
+
+    .services div:nth-child(5)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+}
+
+/* Small - Medium */
+@media (min-width:660px) {
+    .services{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 50px;        
+        grid-template-rows: auto ;
+        row-gap: 100px;
+    }
+    .services .img{
+        display: none;
+    }
+    .services div .title ,.services div p:not(.title) {
+        text-align: center;
+    }
+    /* the icon of graphic design */
+
+    .services div:nth-child(2)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+    /* the icon of web design */
+
+    .services div:nth-child(3)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+    /* the icon of UI & UX design */
+
+    .services div:nth-child(4)::before{
+        left: 46%;
+        top: -60px;
+    }
+
+    /* the icon of web development design */
+
+    .services div:nth-child(5)::before{
+        left: 46%;
+        top: -60px;
+    }
+    .services .main-title{
+        grid-column: 1/3;
+    }
+
+}
+
+/* Medium */
+@media (min-width:770px) {
+    .services{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 90px;
+    }
+    .services div .title ,.services div p:not(.title) {
+        text-align: left;
+    }
+    .services .img{
+        display: none;
+    }
+    .services .main-title{
+        grid-column: 1/3;
+    }
+    /* the icon of graphic design */
+
+    .services div:nth-child(2)::before{
+        left: -58px;
+        top: -10px;
+    }
+
+    /* the icon of web design */
+
+    .services div:nth-child(3)::before{
+        left: -58px;
+        top: -10px;
+    }
+
+    /* the icon of UI & UX design */
+
+    .services div:nth-child(4)::before{
+        left: -58px;
+        top: -10px;
+    }
+
+    /* the icon of web development design */
+
+    .services div:nth-child(5)::before{
+        left: -58px;
+        top: -10px;
+    }
+
+}
+
+/* Large */
+@media (min-width:995px) {
+    .services{
+        grid-template-columns: repeat(3,30%);
+        row-gap: 0px;
+        margin: 50px 20%;
+    }
+    .services .img{
+        display: block;
+    }
+    .services .main-title{
+        grid-column: 1/4;
+    }
+}
+.portfolio{
+    display: grid;
+    grid-template-columns: repeat(3,30%);
+    grid-template-rows: auto auto;
+    column-gap: 30px;
+    row-gap: 30px;
+    justify-content: center;
+    background-color: var(--second-color);
+    padding: 10%;
+    
+}
+.portfolio .main-title{
+    text-align: center;
+    font-size: 100px;
+    font-weight: 1000;
+    color: var(--title-color);
+    padding: var(--title-padding);
+}
+.portfolio .main-title::after{
+    content: "If you do it right, it will last forever.";
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: dimgrey;
+    font-weight: 300;
+    transform: translateY(-35px);
+}
+.portfolio .img img{
+    width: 100%;
+    transform: scale(100%);
+    padding: var(--title-padding);
+}
+.portfolio .parent{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.portfolio div .title{
+    font-weight: 700;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.portfolio div p:not(.title){
+    font-size: 14px;
+    color: darkgray;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+/* Small */
+@media (max-width: 649px) {
+    .portfolio{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .portfolio .main-title{
+        grid-column: 1/2;
+    }
+}
+
+/* Medium */
+@media (min-width:650px) {
+    .portfolio{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .portfolio .main-title{
+        grid-column: 1/3;
+    }
+}
+
+/* Large */
+@media (min-width:995px) {
+    .portfolio{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .portfolio .main-title{
+        grid-column: 1/4;
+    }
+}
+
+.about{
+    display: grid;
+    row-gap: 30px;
+    column-gap: 50px;
+    justify-items: space-betw;
+    padding: var(--section-margin);
+    margin-bottom: 75px ;
+}
+.about .main-title{
+    grid-column: 1/3;
+    text-align: center;
+    font-size: 100px;
+    font-weight: 1000;
+    color: var(--title-color);
+    padding: var(--title-padding);
+}
+.about .main-title::after{
+    content: "less is more work";
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: dimgrey;
+    font-weight: 300;
+    transform: translateY(-35px);
+    padding-bottom: 10%;
+}
+.about .img{
+    transform: scale(30%);
+}
+.about .img img {
+    position: absolute;
+    left: -100%;
+    top: -200%;
+    }
+.about .img::after{
+    content: "L";
+    font-size: 100px;
+    font-weight: 600;
+    color: var(--main-color);
+    position: absolute;
+    z-index: -1;
+    transform: scale(15,19);
+    right: 5%;
+    top: 100%;
+}
+.about .img::before{
+    content: "I";
+    font-size: 100px;
+    font-weight: 600;
+    color: #e3e3e3cd;
+    position: absolute;
+    z-index: -1;
+    transform: scale(20,22);
+    left: -90%;
+    top: 200%;
+}
+.about p:not(.main-title ,.img>*){
+    display: flex;
+    align-items: center;
+    line-height: var(--line-height);
+}
+.about p:nth-child(3){
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+}
+.about p:nth-child(3)::after{
+    content: "";
+    position: absolute;
+    width: 55%;
+    height: 2px;
+    background-color: var(--main-color);
+    bottom: -5px;
+}
+.about p:last-child{
+    font-size: 15px;
+    font-weight: 400;
+    color: grey;
+}
+
+/* Medium */
+@media (max-width:999px) {
+    .about{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        justify-items: center
+    }
+    .about .main-title{
+        grid-column: 1/2;
+    }
+    .about .img::after ,.about .img::before{
+        display: none;
+    }
+    .about .img {
+        grid-row: 2/15;
+        justify-self: center;
+        transform: translateX(3px);
+    }
+    .about .img img{
+        transform: scale(30%) translate(-160%,75%);
+    }
+    .about p:nth-child(3){
+        text-align: center;
+    }
+    .about p:nth-child(3)::after{
+        width: 100%;
+        bottom: -15px;
+    }
+    .about p:last-child{
+        text-align: center;
+    }
+}
+
+/* Large */
+@media (min-width:1000px) {
+    .about{
+        grid-template-columns: repeat(2,50%);
+        grid-template-rows: auto repeat(2,120px);
+    }
+    .about .main-title{
+        grid-column: 1/3;
+    }
+    .about p:not(.main-title ,.img>*){
+        grid-column: 2;
+    }
+
+
+    
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--second-color);
+    padding: var(--section-margin);
+}
+.contact .main-title{
+    font-size: 100px;
+    font-weight: 1000;
+    color: var(--title-color);
+    padding: var(--title-padding);
+}
+.contact .main-title::after{
+    content: "we are born to create";
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: dimgrey;
+    font-weight: 300;
+    transform: translateY(-40px);
+}
+.contact p:nth-child(2){
+    font-size: 30px;
+    font-weight: 900;
+    padding-bottom: 5px;
+    color: #2c4755;
+}
+.contact p:nth-child(3){
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--main-color);
+    text-transform: lowercase;
+    padding-bottom: 20px;
+}
+footer{
+    color: azure;
+    font-weight: 500;
+    text-align: center;
+    background-color: #2c4755;
+    padding: 30px;
+}
+footer span{
+    color: var(--main-color);
+    font-weight: 700;
+}
+
